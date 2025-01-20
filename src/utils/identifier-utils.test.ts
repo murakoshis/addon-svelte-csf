@@ -21,6 +21,7 @@ it('storyNameToId', () => {
   expect(storyNameToId('With 2 illegal !! characters, a PascalCase and an ?')).toBe(
     'with-2-illegal-characters-a-pascal-case-and-an'
   );
+  expect(storyNameToId('emoji 😀 is cool')).toBe('emoji-is-cool');
 });
 it('storyNameToExportName', () => {
   expect(storyNameToExportName('simple')).toBe('Simple');

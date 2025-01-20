@@ -20,7 +20,12 @@ export const exportNameToStoryId = (exportName: string) =>
  */
 export const storyNameToId = (name: string) =>
   // add a space before all caps and use utility from @storybook/csf to sanitize the resulting string
-  sanitize(name.replace(/([A-Z])/g, ' $1').trim());
+  sanitize(
+    name
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/[^\p{ID_Continue}]/gu, '-')
+      .trim()
+  );
 
 /**
  * @example storyNameToExportName('Some Long Story Name!') => 'SomeLongStoryName'
